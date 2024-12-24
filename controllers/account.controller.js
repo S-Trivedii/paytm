@@ -33,10 +33,16 @@ export const checkBalance = async (req, res) => {
 
 export const transferMoney = async (req, res) => {
   const session = await mongoose.startSession();
+  console.log("Hi");
+  console.log(req.body);
 
   try {
     session.startTransaction();
-    const { amount, to } = req.body; // 'to' is the recipient's userId
+    // const { amount, to } = req.body; // 'to' is the recipient's userId
+
+    const amount = Number(req.body.amount);
+    const to = req.body.to;
+
     const userId = req.id;
 
     // Fetch the user's account and check balance

@@ -113,6 +113,33 @@ export const login = async (req, res) => {
   }
 };
 
+// Get Single User using id
+export const getSingleUser = async (req, res) => {
+  // getting Id
+  const userId = req.id;
+
+  let user = await User.findById(userId);
+  if (!user) {
+    return res.status(404).json({
+      message: "User not found",
+      success: false,
+    });
+  }
+
+  user = {
+    _id: user._id,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    email: user.email,
+  };
+
+  return res.status(200).json({
+    message: "User getting successfully",
+    user,
+    success: true,
+  });
+};
+
 // Update profile
 export const updateProfile = async (req, res) => {
   try {

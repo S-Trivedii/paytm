@@ -30,17 +30,5 @@ export const isAuthenticated = (req, res, next) => {
       message: "Something went wrong",
       success: false,
     });
-    // console.log(error);
   }
 };
-
-// Access and Attach the Token in Requests:
-// const token = localStorage.getItem("authToken");
-
-// fetch("/api/protected-route", {
-//   method: "GET",
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-//     "Content-Type": "application/json",
-//   },
-// });

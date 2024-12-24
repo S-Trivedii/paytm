@@ -7,7 +7,12 @@ import accountRoute from "./routes/account.route.js";
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 // middlewares - will get executed everytime for every http method
 app.use(bodyParser.json());
